@@ -10,9 +10,11 @@ const page = () => {
       className="flex flex-col items-center justify-center min-h-screen bg-background px-4 py-16 md:py-32"
       z
     >
-      <div className="flex flex-row justify-center items-center gap-x-2">
-        <h1 className="text-3xl font-extrabold text-foreground">Welcome to</h1>
-        {/* <Image src={"/logo.svg"} alt="Logo" width={142} height={142} /> */}
+      <div className="flex flex-row justify-center items-center gap-x-2 pl-12">
+        <h1 className="text-3xl font-extrabold text-foreground mb-2">
+          Welcome to
+        </h1>
+        <Image src={"/logo.svg"} alt="Logo" width={200} height={200} />
       </div>
 
       <p className="mt-2 text-lg text-muted-foreground font-semibold">

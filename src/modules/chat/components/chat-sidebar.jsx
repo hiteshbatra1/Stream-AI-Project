@@ -17,8 +17,8 @@ const ChatSideBar = ({ user }) => {
   return (
     <div className="flex h-full w-64 flex-col border-r border-border bg-sidebar">
       <div className="flex items-center justify-between border-b border-sidebar-border px-4 py-3">
-        <div className="flex items-center gap-2">
-          <Image src={"/logo.svg"} alt="Logo" width={100} height={100} />
+        <div className="flex items-center gap-2 ml-10">
+          <Image src={"/logo.svg"} alt="Logo" width={250} height={250} />
         </div>
       </div>
       <div className="p-4">
