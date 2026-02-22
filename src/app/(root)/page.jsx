@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { currentUser } from "@/modules/authentication/actions";
 import UserButton from "@/modules/authentication/components/user-button";
+
 import React from "react";
 
 export default async function Home() {
