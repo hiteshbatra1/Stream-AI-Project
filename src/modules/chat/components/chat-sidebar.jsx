@@ -32,12 +32,13 @@ const ChatSideBar = ({ user, chats }) => {
 
     const query = searchQuery.toLowerCase();
 
-    return chats.filter((chat) => {
-      chat.title?.toLowerCase().includes(query) ||
-        chat.messages.some((msg) => {
-          msg.content?.toLowerCase().includes(query);
-        });
-    });
+    return chats.filter(
+      (chat) =>
+        chat.title?.toLowerCase().includes(query) ||
+        chat.messages?.some((msg) =>
+          msg.content?.toLowerCase().includes(query),
+        ),
+    );
   }, [chats, searchQuery]);
 
   //Group chats by date (today, yesterday , lastWeek, older)
@@ -49,7 +50,7 @@ const ChatSideBar = ({ user, chats }) => {
     yesterday.setDate(yesterday.getDate() - 1);
 
     const lastWeek = new Date(today);
-    lastWeek.setDate(lastWeek.getDate - 7);
+    lastWeek.setDate(lastWeek.getDate() - 7);
 
     const groups = {
       today: [],
@@ -127,11 +128,6 @@ const ChatSideBar = ({ user, chats }) => {
             </DropdownMenu>
           </div>
         </Link>
-        <DeleteChatModal
-          chatId={chat.id}
-          isModalOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}
-        />
       </Fragment>
     ));
   };
@@ -214,6 +210,11 @@ const ChatSideBar = ({ user, chats }) => {
           {user.email}
         </span>
       </div>
+      <DeleteChatModal
+        chatId={selectedChatId}
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+      />
     </div>
   );
 };
