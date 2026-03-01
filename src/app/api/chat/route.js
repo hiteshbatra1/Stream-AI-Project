@@ -97,18 +97,18 @@ export async function POST(req) {
         try {
           const messagesToSave = [];
           if (!skipUserMessage) {
-            const latesUserMessage =
+            const latestUserMessage =
               normalizedNewMessages[normalizedNewMessages.length - 1];
 
-            if (latesUserMessage?.role === "user") {
-              const userPartsJSON = extractPartsAsJSON(latesUserMessage);
+            if (latestUserMessage?.role === "user") {
+              const userPartsJSON = extractPartsAsJSON(latestUserMessage);
 
               messagesToSave.push({
                 chatId,
                 content: userPartsJSON,
                 messageRole: MessageRole.USER,
                 model,
-                MessageType: MessageType.NORMAL,
+                messageType: MessageType.NORMAL,
               });
             }
           }
@@ -121,7 +121,7 @@ export async function POST(req) {
               content: assistantPartsJSON,
               messageRole: MessageRole.ASSISTANT,
               model,
-              messageType: "NORMAL",
+              messageType: MessageType.NORMAL,
             });
           }
 

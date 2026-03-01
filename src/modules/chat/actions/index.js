@@ -148,7 +148,7 @@ export const deleteChat = async (chatId) => {
 
     if (!chat) {
       return {
-        sucess: false,
+        success: false,
         message: "Chat not found",
       };
     }
