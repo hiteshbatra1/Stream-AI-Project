@@ -84,7 +84,10 @@ export function ModelSelector({
           </Button>
         </PopoverTrigger>
 
-        <PopoverContent className={"w-3xl p-0"} align="start">
+        <PopoverContent
+          className={"w-full max-w-[95vw] sm:max-w-3xl p-0"}
+          align="start"
+        >
           <div className="p-3 border-b">
             <div className="relative">
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -97,7 +100,7 @@ export function ModelSelector({
             </div>
           </div>
 
-          <ScrollArea className={"h-[400px]"}>
+          <ScrollArea className={"h-[350px] sm:h-[400px]"}>
             <div className="p-2">
               <div className="px-2 py-1.5 text-xs font-semibold text-muted-foreground">
                 Available Models ({filteredModels.length})
@@ -112,7 +115,7 @@ export function ModelSelector({
                 <div
                   key={model.id}
                   className={cn(
-                    "relative flex cursor-pointer select-none items-start gap-2 rounded-md px-2 py-2 text-sm outline-none transition-colors hover:bg-accent hover:text-accent-foreground",
+                    "relative flex flex-col sm:flex-row cursor-pointer select-none items-start gap-2 rounded-md px-2 py-2 text-sm outline-none transition-colors hover:bg-accent hover:text-accent-foreground",
                     selectedModelId === model.id && "bg-accent",
                   )}
                   onClick={() => {
@@ -175,7 +178,7 @@ export function ModelSelector({
       </Popover>
 
       <Dialog open={detailsOpen} onOpenChange={setDetailsOpen}>
-        <DialogContent className="max-w-2xl max-h-[80vh] overflow-hidden flex flex-col">
+        <DialogContent className="max-w-[95vw] sm:max-w-2xl max-h-[80vh] overflow-hidden flex flex-col">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <Sparkles className="h-5 w-5" />
@@ -203,7 +206,7 @@ export function ModelSelector({
                   <h3 className="text-sm font-semibold mb-3">
                     Context & Capabilities
                   </h3>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1">
                       <p className="text-xs text-muted-foreground">
                         Context Length
@@ -249,7 +252,7 @@ export function ModelSelector({
                   <h3 className="text-sm font-semibold mb-3">
                     Supported Modalities
                   </h3>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <p className="text-xs text-muted-foreground">
                         Input Modalities
