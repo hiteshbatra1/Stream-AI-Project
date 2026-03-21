@@ -9,8 +9,14 @@ const page = () => {
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <nav className="w-full px-4 py-4 sm:px-6 sm:py-6 md:px-10 flex justify-center md:justify-start bg-gray-900">
-        <div className="w-24 sm:w-32 md:w-40 h-auto">
-          <Image src={"/logo.svg"} alt="StreamAI" width={300} height={300} />
+        <div className="w-1/2 sm:w-1/3 md:w-40 h-auto">
+          <Image
+            src="/logo.svg"
+            alt="StreamAI"
+            width={300}
+            height={300}
+            className="w-full h-auto"
+          />
         </div>
       </nav>
 
@@ -20,7 +26,7 @@ const page = () => {
         </h1>
 
         <p className="mt-4 md:mt-6 text-base md:text-lg text-muted-foreground font-semibold text-center px-2">
-          Sign in below with GitHub account
+          Sign in below with GitHub or Google account
         </p>
 
         <Button
@@ -43,6 +49,22 @@ const page = () => {
             className="dark:invert"
           />
           <span className="font-bold ml-2">Sign in with Github</span>
+        </Button>
+
+        <Button
+          variant={"outline"}
+          className={
+            "w-full max-w-sm mt-4 px-6 md:px-7 py-6 md:py-7 flex flex-row justify-center items-center cursor-pointer text-sm md:text-base"
+          }
+          onClick={() =>
+            signIn.social({
+              provider: "google",
+              callbackURL: "/",
+            })
+          }
+        >
+          <Image src={"/google.svg"} alt="Google" width={24} height={24} />
+          <span className="font-bold ml-2">Sign in with Google</span>
         </Button>
       </main>
 
