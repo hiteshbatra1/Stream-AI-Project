@@ -8,9 +8,9 @@ import React from "react";
 const page = () => {
   return (
     <div className="flex flex-col min-h-screen bg-background">
-      <nav className="w-full px-6 py-6 md:px-10 flex justify-center md:justify-start bg-gray-900">
-        <div className="w-32 md:w-40 h-auto">
-          <span className="text-blue-400  text-2xl font-bold">StreamAI</span>
+      <nav className="w-full px-4 py-4 sm:px-6 sm:py-6 md:px-10 flex justify-center md:justify-start bg-gray-900">
+        <div className="w-24 sm:w-32 md:w-40 h-auto">
+          <Image src={"/logo.svg"} alt="StreamAI" width={300} height={300} />
         </div>
       </nav>
 
@@ -35,7 +35,13 @@ const page = () => {
             })
           }
         >
-          <Image src={"/github.svg"} alt="Github" width={24} height={24} />
+          <Image
+            src={"/github.svg"}
+            alt="Github"
+            width={24}
+            height={24}
+            className="dark:invert"
+          />
           <span className="font-bold ml-2">Sign in with Github</span>
         </Button>
       </main>
