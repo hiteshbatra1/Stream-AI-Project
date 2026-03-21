@@ -18,12 +18,20 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import DeleteChatModal from "./modal/chat-delete-modal";
+import { useSidebarStore } from "../hooks/use-sidebar";
 
 const ChatSideBar = ({ user, chats }) => {
   const { activeChatId } = useChatStore();
+  const { closeSidebar } = useSidebarStore();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedChatId, setSelectedChatId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleCloseSidebarOnMobile = () => {
+    if (typeof window !== "undefined" && window.innerWidth < 768) {
+      closeSidebar();
+    }
+  };
 
   const filteredChats = useMemo(() => {
     if (!searchQuery.trim()) {
@@ -96,6 +104,7 @@ const ChatSideBar = ({ user, chats }) => {
       <Fragment key={chat.id}>
         <Link
           href={`/chat/${chat.id}`}
+          onClick={handleCloseSidebarOnMobile}
           className={cn(
             "block rounded-lg px-3 py-2 text-sm text-sidebar-foreground hover:bg-sidebar-accent transition-colors",
             chat.id === activeChatId && "bg-sidebar-accent",
@@ -133,14 +142,14 @@ const ChatSideBar = ({ user, chats }) => {
   };
 
   return (
-    <div className="flex h-full w-64 flex-col border-r border-border bg-sidebar">
+    <div className="flex h-full w-full md:w-64 flex-col border-r border-border bg-sidebar">
       <div className="flex items-center justify-between border-b border-sidebar-border px-4 py-3">
         <div className="flex items-center gap-2 ml-10">
           <Image src={"/logo.svg"} alt="Logo" width={250} height={250} />
         </div>
       </div>
       <div className="p-4">
-        <Link href={"/"}>
+        <Link href={"/"} onClick={handleCloseSidebarOnMobile}>
           <Button className={"w-full"}>
             <PlusIcon className="mr-2 h-4 w-4" />
             New Chat

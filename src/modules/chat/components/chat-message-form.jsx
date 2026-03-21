@@ -36,19 +36,16 @@ const ChatMessageForm = ({ initialMessage, onMessageChange }) => {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto px-4 pb-6">
+    <div className="w-full max-w-full sm:max-w-3xl mx-auto px-4 pb-6">
       <form onSubmit={handleSubmit}>
-        <div
-          className="relative rounded-2xl border-border shadow-sm transition-all
-            "
-        >
+        <div className="relative rounded-2xl border-border shadow-sm transition-all overflow-hidden">
           <Textarea
             value={message}
             onChange={(e) => {
               setMessage(e.target.value);
             }}
             placeholder="Type your message here"
-            className="`min-h-[60px]` `max-h-[200px]` resize-none border-0 bg-transparent px-4 py-3 text-base focus-visible:ring-0 focus-visible:ring-offset-0"
+            className="min-h-[70px] max-h-[220px] resize-none border-0 bg-transparent px-4 py-3 text-base focus-visible:ring-0 focus-visible:ring-offset-0"
             onKeyDown={(e) => {
               if (e.key === "Enter" && !e.shiftKey) {
                 e.preventDefault();
@@ -57,10 +54,10 @@ const ChatMessageForm = ({ initialMessage, onMessageChange }) => {
             }}
           />
 
-          <div className="flex items-center justify-between gap-2 px-3 py-2 border-t">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 px-3 py-2 border-t">
             {/* model selector */}
 
-            <div className="flex items-center gap-1">
+            <div className="w-full sm:w-auto flex items-center gap-1">
               {isPending ? (
                 <>
                   <Spinner />
@@ -82,7 +79,7 @@ const ChatMessageForm = ({ initialMessage, onMessageChange }) => {
               disabled={!message.trim() || isChatPending}
               size="sm"
               variant={message.trim() ? "default" : "ghost"}
-              className="h-8 w-8 p-0 rounded-full"
+              className="self-end sm:self-auto h-8 w-8 sm:w-10 p-0 rounded-full"
             >
               {isChatPending ? (
                 <>
