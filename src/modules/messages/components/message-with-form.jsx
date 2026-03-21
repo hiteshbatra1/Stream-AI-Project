@@ -165,7 +165,7 @@ const MessageWithForm = ({ chatId }) => {
   const messageToRender = [...initialMessages, ...messages];
 
   return (
-    <div className="max-w-4xl mx-auto p-6 relative size-full h-[calc(100vh-4rem)]">
+    <div className="w-full max-w-full sm:max-w-4xl mx-auto p-4 sm:p-6 relative h-[calc(100vh-4rem)] sm:h-[calc(100vh-4rem)]">
       <div className="flex flex-col h-full">
         <Conversation className={"h-full"}>
           <ConversationContent>
@@ -226,8 +226,8 @@ const MessageWithForm = ({ chatId }) => {
               placeholder="Type your message"
             />
           </PromptInputBody>
-          <PromptInputToolbar>
-            <PromptInputTools className={"flex items-center gap-2"}>
+          <PromptInputToolbar className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <PromptInputTools className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
               {isModelLoading ? (
                 <Spinner />
               ) : (
@@ -251,7 +251,9 @@ const MessageWithForm = ({ chatId }) => {
                 )
               )}
             </PromptInputTools>
-            <PromptInputSubmit status={status} />
+            <div className="w-full sm:w-auto flex justify-end">
+              <PromptInputSubmit status={status} />
+            </div>
           </PromptInputToolbar>
         </PromptInput>
       </div>
