@@ -49,9 +49,9 @@ const CHAT_TAB_MESSAGE = [
 const ChatWelcomeTabs = ({ username, onMessageSelect }) => {
   const [activeTab, setActiveTab] = useState(0);
   return (
-    <div className="flex flex-col items-center justify-center px-4">
-      <div className="w-full max-w-3xl space-y-8">
-        <h1 className="text-4xl font-semibold">
+    <div className="flex flex-col items-center justify-center px-4 w-full">
+      <div className="w-full max-w-3xl space-y-6 md:space-y-8">
+        <h1 className="text-2xl md:text-4xl font-semibold leading-tight">
           How i can help you,{" "}
           {username.slice(0, username.indexOf(" ")) || username}
         </h1>
@@ -62,10 +62,13 @@ const ChatWelcomeTabs = ({ username, onMessageSelect }) => {
               key={tab.tabName}
               variant={activeTab === index ? "default" : "secondary"}
               onClick={() => setActiveTab(index)}
-              className={"w-[110px] justify-start"}
+              className={
+                "w-auto px-3 md:w-[110px] md:justify-start text-sm md:text-base"
+              }
+              size="sm"
             >
               {tab.icon}
-              <span className="ml-2">{tab.tabName}</span>
+              <span className="ml-2 hidden sm:inline">{tab.tabName}</span>
             </Button>
           ))}
         </div>
@@ -75,7 +78,7 @@ const ChatWelcomeTabs = ({ username, onMessageSelect }) => {
             <div key={index}>
               <button
                 onClick={() => onMessageSelect(message)}
-                className="w-full text-left text-sm text-muted-foreground hover:text-primary transition-colors duration-300 ease-in-out py-2"
+                className="w-full text-left text-xs md:text-sm text-muted-foreground hover:text-primary transition-colors duration-300 ease-in-out py-2"
               >
                 {message}
               </button>
