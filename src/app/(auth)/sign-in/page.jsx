@@ -8,7 +8,7 @@ import React from "react";
 const page = () => {
   return (
     <div className="flex flex-col min-h-screen bg-background">
-      <nav className="w-full px-4 py-4 sm:px-6 sm:py-6 md:px-10 flex justify-center md:justify-start bg-gray-900">
+      <nav className="w-full px-4 py-4 sm:px-6 sm:py-6 md:px-10 flex justify-start md:justify-start bg-gray-900">
         <div className="w-1/2 sm:w-1/3 md:w-40 h-auto">
           <Image
             src="/logo.svg"
